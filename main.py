@@ -15,12 +15,6 @@ class ExtractRequest(BaseModel):
     file_url: HttpUrl
     rebate_program_number: str
 
-@app.post("/health-check")
-async def health_check():
-    """
-    Health check endpoint to verify the service is running.
-    """
-    return {"status": "OK", "message": "Service is running"}
 
 @app.post("/extract-validate")
 async def extract_endpoint(req: ExtractRequest):
@@ -57,3 +51,11 @@ async def extract_endpoint(req: ExtractRequest):
     return {
         "Invoice Extraction": extracted
     }
+
+
+@app.post("/health-check")
+async def health_check():
+    """
+    Health check endpoint to verify the service is running.
+    """
+    return {"status": "OK", "message": "Service is running"}
